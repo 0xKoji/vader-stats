@@ -3,10 +3,14 @@ import data from '../VethHolders.json'
 
 const VethHolders = () => {
 
-    const [holders, setHolders] = useState(data)
+    const [holders, setHolders] = useState([])
     const [burns, setBurns] = useState([])
 
     const [onlyHolders, setOnlyHolders] = useState(false)
+
+    useEffect(() => {
+        return setHolders(data)
+    }, [])
 
     useEffect(() => {
         if(onlyHolders === true){
