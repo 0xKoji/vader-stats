@@ -8,13 +8,16 @@ const VethHolders = () => {
 
     const [onlyHolders, setOnlyHolders] = useState(false)
 
-    useEffect(async() => {
+    useEffect(() => {
         if(onlyHolders === true){
             setBurns([])
         }else if(onlyHolders === false){
-            const burns = await (await fetch(`https://api.covalenthq.com/v1/1/address/0x6d4a43ee4770a2bab97460d3a3b783641d85d108/transactions_v2/?quote-currency=USD&format=JSON&block-signed-at-asc=false&no-logs=false&page-size=1000000&key=${process.env.REACT_APP_COVAL_KEY}`)).json()
+            (async() => {
+                const burns = await (await fetch(`https://api.covalenthq.com/v1/1/address/0x6d4a43ee4770a2bab97460d3a3b783641d85d108/transactions_v2/?quote-currency=USD&format=JSON&block-signed-at-asc=false&no-logs=false&page-size=1000000&key=${process.env.REACT_APP_COVAL_KEY}`)).json()
         
-            setBurns(burns.data.items)
+                setBurns(burns.data.items)
+            })()
+
         }
     }, [onlyHolders])
 

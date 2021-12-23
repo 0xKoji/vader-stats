@@ -5,10 +5,13 @@ const MarketCap = () => {
 
     const [marketCap, setMarketCap] = useState(0)
     
-    useEffect(async() => {
-        const gecko = await (await fetch('https://api.coingecko.com/api/v3/coins/vader-protocol')).json()
+    useEffect(() => {
+        (async() => {
+            const gecko = await (await fetch('https://api.coingecko.com/api/v3/coins/vader-protocol')).json()
         
-        setMarketCap(gecko.market_data.market_cap.usd)
+            setMarketCap(gecko.market_data.market_cap.usd)
+        })()
+
     }, [])
 
 
