@@ -16,7 +16,7 @@ const VaderStaked = () => {
 
     return (
         <div>
-            <Card title='Total Vader Staked' desc={Number(staked).toLocaleString()} />
+            <Card title='Total Vader Staked' desc={Number(staked).toLocaleString() + ' | ' + Number(staked / 25000000000 * 100).toLocaleString() + '%'} />
         </div>
     )
 }
