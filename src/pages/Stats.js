@@ -37,8 +37,6 @@ const Stats = () => {
         if(window.ethereum && account == null){
             setProvider(new ethers.providers.Web3Provider(window.ethereum))
 
-
-
             window.ethereum.request({ method: 'eth_requestAccounts' })
             .then(results => {
                 setAccount(results[0])
